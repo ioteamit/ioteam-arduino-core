@@ -82,7 +82,7 @@ extern "C"
 // LEDs
 #define PIN_LED_13           (13u)
 #define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (25u)
+#define PIN_LED_TXL          (27u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
@@ -113,41 +113,26 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
-// GPS
-#define PIN_GPS_TX           (32ul)
-#define PIN_GPS_RX           (33ul)
-#define PAD_GPS_TX           (UART_TX_PAD_0)
-#define PAD_GPS_RX           (SERCOM_RX_PAD_1)
-
-// SigFox
-#define PIN_SIGFOX_TX        (34ul)
-#define PIN_SIGFOX_RX        (35ul)
-#define PIN_SIGFOX_RTS       (36ul)
-#define PIN_SIGFOX_CTS       (37ul)
-#define PIN_SIGFOX_RADIO_STS (38ul)
-#define PIN_SIGFOX_STDBY_STS (39ul)
-#define PIN_SIGFOX_WAKEUP    (40ul)
-#define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
-
-// BLE
-#define PIN_BLE_TX           (41ul)
-#define PIN_BLE_RX           (42ul)
-#define PIN_BLE_RTS          (43ul)
-#define PIN_BLE_CTS          (44ul)
-#define PAD_BLE_TX           (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_BLE_RX           (SERCOM_RX_PAD_1)
-
 // Serial1
 #define PIN_SERIAL1_RX       (0ul)
 #define PIN_SERIAL1_TX       (1ul)
 #define PAD_SERIAL1_TX       (UART_TX_PAD_2)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
 
+// DUST
+#define PIN_DUST_TX           (31ul)
+#define PIN_DUST_RX           (32ul)
+#define PAD_DUST_TX           (UART_TX_PAD_0)
+#define PAD_DUST_RX           (SERCOM_RX_PAD_1)
+#define DUST_RESET_PIN        (33ul)
+#define DUST_TIM_EN_PIN       (34ul)
+
+
+
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 1
+#define SPI_INTERFACES_COUNT 2
 
 #define PIN_SPI_MISO         (22u)
 #define PIN_SPI_MOSI         (23u)
@@ -163,6 +148,30 @@ static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
+// SPI1: Connected to Sigfox and WiFi
+#define USE_SPI1
+#define PIN_SPI1_MISO (35u)
+#define PIN_SPI1_MOSI (36u)
+#define PIN_SPI1_SCK  (37u)
+#define PERIPH_SPI1   sercom4
+#define PAD_SPI1_TX   SPI_PAD_2_SCK_3
+#define PAD_SPI1_RX   SERCOM_RX_PAD_0
+
+// SigFox
+#define SIGFOX_RES_PIN       (39ul)
+#define SIGFOX_PWRON_PIN     (40ul)
+#define SIGFOX_EVENT_PIN     (41ul)
+#define SIGFOX_SS_PIN        (38ul)
+#define SIGFOX_RFPWR_PIN     (42ul)
+
+// WiFi Module
+#define WIFI_SS_PIN        (43ul) // PB11
+#define WIFI_IRQN_PIN      (44ul) // PB30
+#define WIFI_WAKE_PIN      (45ul) // PB31
+#define WIFI_CHIP_EN_PIN   (46ul) // PB0
+#define WIFI_RES_PIN       (47ul) // PB1
+
+
 /*
  * Wire Interfaces
  */
@@ -176,20 +185,11 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE  (27ul)
-#define PIN_USB_DM           (28ul)
-#define PIN_USB_DP           (29ul)
+#define PIN_USB_HOST_ENABLE  (28ul)
+#define PIN_USB_DM           (29ul)
+#define PIN_USB_DP           (30ul)
 
 
-// IoExtender
-#define PIN_RESET_COMPONENT (30u)
-#define PIN_IOE_INT         (31u)
-
-// External Battery
-#define PIN_EXT_PWR      (46u)
-#define PIN_LIPO_MON     (47u)
-#define PIN_BATT_MON     (48u)
-#define PIN_ENA_MON      (49u)
 
 /*
     Yellow Led wrapper function
@@ -205,41 +205,19 @@ void ledYellowOneLight(uint32_t value);
 void ledYellowTwoLight(uint32_t value);
 
 
-/*
-    Return the information if the StepUp is enabled
-    
-    return:
-    true= the StepUp is running
-    false = the Sme is not under StepUp Power
-*/
-bool isOnBattery(void);
-
-
-/*
- * FORCE-ON (only SE868-A)
-Force-ON is an input signal that can be used to wake up the SE868-A from the sleep mode. 
-It is internally pulled-up. It has active-low logic, i.e. the module wakes up when FORCE_ON is tied to ground. 
-When inactive, it should be left open drain or open collector.
-
-Note:
-keeping FORCE_ON tied to ground won’t prevent the SE868-A from going into sleep mode, since this signal is sensitive only to the high-low transition.
-No pull-up circuits are allowed on the FORCE_ON pin, since the signal is already internally pulled up.
-*/
-void gpsWakeup(void);
-void gpsSleep(void);
 
 /*
  * The function resets all the component mounted on the base 
- *      GPS
  *      SigFox
- *      BLE
+ *      DUST
+ *      WiFi
  * The reset is executed by a LOW signal.
  * The function move LOW the signal for a while and than move up again.
  */
 void resetBaseComponent(void);
 
-void sfxSleep(void);
-void sfxWakeup(void);
+//void sfxSleep(void);
+//void sfxWakeup(void);
 
 #ifdef __cplusplus
 }

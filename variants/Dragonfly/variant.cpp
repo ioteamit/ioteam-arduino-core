@@ -126,8 +126,8 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | LEDs             |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 25         |                  |  PB03  | RX              |
- * | 26         |                  |  PA27  | TX              |
+ * | 26         |                  |  PB03  | RX              |
+ * | 27         |                  |  PA27  | TX              |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB,  3, PIO_OUTPUT, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // used as output only
@@ -137,12 +137,12 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | USB              |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 28         |                  |  PA24  | USB_NEGATIVE    | *USB/DM
- * | 29         |                  |  PA25  | USB_POSITIVE    | *USB/DP
+ * | 28         |                  |  PA28  | USB_HOST_ENABLE | EIC/EXTINT[8]
+ * | 29         |                  |  PA24  | USB_NEGATIVE    | *USB/DM
+ * | 30         |                  |  PA25  | USB_POSITIVE    | *USB/DP
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  //NINO* | 27         |                  |  PA28  | USB_HOST_ENABLE | EIC/EXTINT[8]
-  //NINO{ PORTA, 28, PIO_COM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // USB Host enable
+  { PORTA, 28, PIO_COM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // USB Host enable
   { PORTA, 24, PIO_COM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // USB/DM
   { PORTA, 25, PIO_COM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // USB/DP
 
@@ -154,24 +154,24 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | DUST             |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 30         |                  |  PB16  | TXD             | 
- * | 31         |                  |  PB17  | RXD             | 
- * | 32         |                  |  PB22  | RSTN            | 
- * | 33         |                  |  PB04  | TIMEN           | 
+ * | 31         |                  |  PB16  | TXD             | 
+ * | 32         |                  |  PB17  | RXD             | 
+ * | 33         |                  |  PB22  | RSTN            | 
+ * | 34         |                  |  PB04  | TIMEN           | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTB,  16, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // 
-  { PORTB,  17, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //
+  { PORTB,  16, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // 
+  { PORTB,  17, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //
   { PORTB,  22, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //
-  { PORTB,  04, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //
+  { PORTB,   4, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //
      
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | SPI              |        |                 |
+ * |            | SPI1             |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 34         |                  |  PB12  | MISO            | 
- * | 35         |                  |  PB14  | MOSI            | 
- * | 36         |                  |  PB15  | SCK             | 
+ * | 35         |                  |  PB12  | MISO            | 
+ * | 36         |                  |  PB14  | MOSI            | 
+ * | 37         |                  |  PB15  | SCK             | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB,  12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // MISO:  NINO
@@ -182,81 +182,57 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | SIGFOX           |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 37         |                  |  PB13  | NSS             | 
- * | 38         |                  |  PB05  | NRESET          | 
- * | 39         |                  |  PB07  | PWRON           | 
- * | 40         |                  |  PB10  | EVENT           | 
- * | 41         |                  |  PB23  | RFPWR           | 
+ * | 38         |                  |  PB13  | NSS             | 
+ * | 39         |                  |  PB05  | NRESET          | 
+ * | 40         |                  |  PB07  | PWRON           | 
+ * | 41         |                  |  PB10  | EVENT           | 
+ * | 42         |                  |  PB23  | RFPWR           | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB,  13, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // NSS:  NINO
-  { PORTB,  05, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // NRESET:  NINO
-  { PORTB,  07, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // PWRON:  NINO
-  { PORTB,  10, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // EVENT:  NINO
-  { PORTB,  23, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RFPWR:  NINO
+  { PORTB,   5, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // NRESET:  NINO
+  { PORTB,   7, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // PWRON:  NINO
+  { PORTB,  10, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_10 }, // EVENT:  NINO
+  { PORTB,  23, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RFPWR:  NINO
 
  /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | WIFI             |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 42         |                  |  PB11  | NSS             | 
- * | 43         |                  |  PB30  | IRQN            | 
- * | 44         |                  |  PB31  | WAKE            | 
- * | 45         |                  |  PB00  | CHIP_EN         | 
- * | 46         |                  |  PB01  | RESETN          | 
+ * | 43         |                  |  PB11  | NSS             | 
+ * | 44         |                  |  PB30  | IRQN            | 
+ * | 45         |                  |  PB31  | WAKE            | 
+ * | 46         |                  |  PB00  | CHIP_EN         | 
+ * | 47         |                  |  PB01  | RESETN          | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB,  11, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // NSS:  NINO
-  { PORTB,  30, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // IRQN:  NINO
-  { PORTB,  31, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // WAKE:  NINO
-  { PORTB,  00, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // CHIP_EN:  NINO
-  { PORTB,  01, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RESETN:  NINO
+  { PORTB,  30, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_14 }, // IRQN:  NINO
+  { PORTB,  31, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // WAKE:  NINO
+  { PORTB,   0, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // CHIP_EN:  NINO
+  { PORTB,   1, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RESETN:  NINO
 
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | ???              |        |                 |
+ * |            | I2C              |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 47         |                  |  PA12  | SCL             | 
- * | 48         |                  |  PA13  | SDA             | 
+ * | 48         | SDA              |  PA12  | SDA             | EIC/EXTINT[12]                        PTC/X[10] *SERCOM2/PAD[0] SERCOM4/PAD[0] TCC2/WO[0] TCC0/WO[6]
+ * | 49         | SCL              |  PA33  | SCL             | EIC/EXTINT[13]                        PTC/X[11] *SERCOM2/PAD[1] SERCOM4/PAD[1] TCC2/WO[1] TCC0/WO[7]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTA,  12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL:  NINO
-  { PORTA,  13, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA:  NINO
+  { PORTA, 12, PIO_SERCOM, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA: SERCOM2/PAD[0]
+  { PORTA, 13, PIO_SERCOM, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_13 }, // SCL: SERCOM2/PAD[1]
 
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | ???              |        |                 |
+ * |            | Analog Conn      |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 49         |                  |  PA31  | SWDIO           | 
- * | 50         |                  |  PA30  | SWCLK           | 
- * | 51         |                  |  ???   | RESETN          | 
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- */
-  { PORTA,  31, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SWDIO:  NINO
-  { PORTA,  30, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SWCLK:  NINO
-  { ?????,  ??, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // ???:  NINO
-
-/*
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | ???              |        |                 |
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 52         |                  |  PA06  | ATN             | 
- * | 53         |                  |  PA03  | VREFA           | 
+ * | 50         | ATN              |  PB06  |                 | EIC/EXTINT[6]  ADC/AIN[14] PTC/Y[12]
+ * | 51         | AREF             |  PA03  |                 | EIC/EXTINT[3] *[ADC|DAC]/VREFA ADC/AIN[1] PTC/Y[1]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTA,  06, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // ATN:  NINO
-  { PORTA,  03, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // VREFA:  NINO
-
-/*
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | ???              |        |                 |
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 54         |                  |  PA00  | XIN32           | 
- * | 55         |                  |  PA01  | XOUT32          | 
- * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- */
-  { PORTA,  00, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // XIN32:  NINO
-  { PORTA,  01, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // XOUT32:  NINO
+  { PORTB, 6, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_6 }, 
+  { PORTA, 3, PIO_ANALOG,  PIN_ATTR_ANALOG,  No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // DAC/VREFP
 
   
 const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC3, TC4, TC5, TC6, TC7 } ;
@@ -271,28 +247,18 @@ SERCOM sercom5( SERCOM5 ) ;
 
 Uart Serial1( &sercom0, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ) ;
 
-Uart GPS( &sercom2, PIN_GPS_RX, PIN_GPS_TX, PAD_GPS_RX, PAD_GPS_TX ) ;
-Uart BLE( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
-Uart iotAntenna( &sercom4, PIN_SIGFOX_RX, PIN_SIGFOX_TX, PAD_SIGFOX_RX, PAD_SIGFOX_TX ) ;
+Uart DUST( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
+
+SPICLass& SIGFOX_SPI = SPI1 ;
 
 void SERCOM0_Handler()
 {
   Serial1.IrqHandler();
 }
 
-void SERCOM2_Handler()
-{
-  GPS.IrqHandler();
-}
-
-void SERCOM4_Handler()
-{
-  iotAntenna.IrqHandler();
-}
-
 void SERCOM5_Handler()
 {
-  BLE.IrqHandler();
+  DUST.IrqHandler();
 }
 
 void ledYellowTwoLight(uint32_t value) {
@@ -315,19 +281,6 @@ void ledYellowOneLight(uint32_t value)   {
     }
 }
 
-bool isOnBattery(void) {   
-    return digitalRead(PIN_EXT_PWR);
-}
-
-
-void gpsWakeup(void){   
-    // Activate force on moving low
-}
-
-#define  SL868A_SET_STDBY_CMD    "$PMTK161,0*28\r\n"    // Set standby
-void gpsSleep(void) {
-    GPS.print(SL868A_SET_STDBY_CMD);
-}
 
 
 /*
@@ -335,19 +288,17 @@ Output signal which indicates the status of the radio.
 Set to VCC during radio transmission or as soon as a radio frame is detected with correct synchronization word. 
 The signals returns to GND at the end of transmission or as soon as the frame reception is finished.
 */
+// SEVE ...
 bool isSFXMsgOnAir(void) {
-    return digitalRead(PIN_SIGFOX_RADIO_STS);
+//    return digitalRead(PIN_SIGFOX_RADIO_STS);
+    return false;
 }
 
 void sfxSleep(void){
-
-    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
-    
+//    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
 }
 
 void sfxWakeup(void){
-
-     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
-     
+//     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
 }
-
+// ... SEVE
