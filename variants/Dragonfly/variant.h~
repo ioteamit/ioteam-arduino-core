@@ -216,6 +216,8 @@ void ledYellowTwoLight(uint32_t value);
  */
 void resetBaseComponent(void);
 
+//void sfxSleep(void);
+//void sfxWakeup(void);
 
 #ifdef __cplusplus
 }
@@ -240,7 +242,10 @@ extern SERCOM sercom4;
 extern SERCOM sercom5;
 
 extern Uart Serial1;
-extern Uart DUST;
+
+extern Uart GPS;
+extern Uart BLE;
+extern Uart iotAntenna;
 
 #endif
 
