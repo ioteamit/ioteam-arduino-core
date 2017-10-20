@@ -1,0 +1,124 @@
+;
+; Copyright 2016 Arduino LLC (http://www.arduino.cc/)
+;
+; Arduino is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program; if not, write to the Free Software
+; Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+;
+; As a special exception, you may use this file as part of a free software
+; library without restriction.  Specifically, if other files instantiate
+; templates or use macros or inline functions from this file, or you compile
+; this file and link it with other files to produce an executable, this
+; file does not by itself cause the resulting executable to be covered by
+; the GNU General Public License.  This exception does not however
+; invalidate any other reasons why the executable file might be covered by
+; the GNU General Public License.
+;
+
+[Strings]
+DriverPackageDisplayName="Arrow USB Driver (for SAMD boards)"
+ManufacturerName="Arrow (www.arrow.com)"
+ServiceName="USB RS-232 Emulation Driver"
+bossa.name="Bossa Program Port"
+sme_fox.sketch.name="SmartEverything Fox"
+sme_fox.bootloader.name="SmartEverything Fox bootloader"
+asmeFox3.sketch.name="SmartEverything Fox3"
+asmeFox3.bootloader.name="SmartEverything Fox3 bootloader"
+asmeLion.sketch.name="SmartEverything Lion"
+asmeLion.bootloader.name="SmartEverything Lion bootloader"
+dustino.sketch.name="IOTEAM Dustino"
+dustino.bootloader.name="IOTEAM Dustino bootloader"
+asmeDragonfly.sketch.name="SmartEverything Dragonfly"
+asmeDragonfly.bootloader.name="SmartEverything Dragonfly bootloader"
+
+[DefaultInstall]
+CopyINF=arrow.inf
+
+[Version]
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Signature="$Windows NT$"
+Provider=%ManufacturerName%
+DriverPackageDisplayName=%DriverPackageDisplayName%
+CatalogFile=arrow.cat
+; DriverVer date is MM/DD/YYYY
+DriverVer=10/21/2016,1.0.0.0
+
+[Manufacturer]
+%ManufacturerName%=DeviceList, NTamd64, NTia64
+
+[DestinationDirs]
+FakeModemCopyFileSection=12
+DefaultDestDir=12
+
+[DeviceList]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%sme_fox.sketch.name%=DriverInstall, USB\VID_2341&PID_E002&MI_00
+%sme_fox.bootloader.name%=DriverInstall, USB\VID_2341&PID_E001
+%asmeFox3.sketch.name%=DriverInstall, USB\VID_2341&PID_E008&MI_00
+%asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
+%asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
+%asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
+%asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+
+[DeviceList.NTamd64]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%sme_fox.sketch.name%=DriverInstall, USB\VID_2341&PID_E002&MI_00
+%sme_fox.bootloader.name%=DriverInstall, USB\VID_2341&PID_E001
+%asmeFox3.sketch.name%=DriverInstall, USB\VID_2341&PID_E008&MI_00
+%asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
+%asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
+%asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
+%asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+
+[DeviceList.NTia64]
+%bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
+%sme_fox.sketch.name%=DriverInstall, USB\VID_2341&PID_E002&MI_00
+%sme_fox.bootloader.name%=DriverInstall, USB\VID_2341&PID_E001
+%asmeFox3.sketch.name%=DriverInstall, USB\VID_2341&PID_E008&MI_00
+%asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
+%asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
+%asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
+%asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+
+[DriverInstall]
+include=mdmcpq.inf,usb.inf
+CopyFiles = FakeModemCopyFileSection
+AddReg=DriverAddReg
+
+[DriverAddReg]
+HKR,,DevLoader,,*ntkern 
+HKR,,NTMPDriver,,usbser.sys 
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.Services]
+include=mdmcpq.inf
+AddService=usbser, 0x00000002, DriverService
+
+[DriverService]
+DisplayName=%ServiceName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+LoadOrderGroup=Base
+
