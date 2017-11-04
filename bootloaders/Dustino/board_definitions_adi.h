@@ -23,11 +23,11 @@
 /*
  * USB device definitions
  */
-#define STRING_PRODUCT "SmartEverything Lion"
+#define STRING_PRODUCT "ADI"
 #define USB_VID_HIGH   0x23
 #define USB_VID_LOW    0x41
 #define USB_PID_HIGH   0xE0
-#define USB_PID_LOW    0x09
+#define USB_PID_LOW    0x0B
 
 /*
  * If BOOT_DOUBLE_TAP_ADDRESS is defined the bootloader is started by
@@ -54,7 +54,6 @@
 #define BOOT_USART_PAD1                   PINMUX_UNUSED
 #define BOOT_USART_PAD0                   PINMUX_UNUSED
 
-
 /* Master clock frequency */
 #define CPU_FREQUENCY                     (48000000ul)
 #define VARIANT_MCK                       CPU_FREQUENCY
@@ -69,13 +68,15 @@
 /*
  * LEDs definitions
  */
+// PA20 (digital pin 6)
 #define BOARD_LED_PORT                    (0)
-#define BOARD_LED_PIN                     (17)
+#define BOARD_LED_PIN                     (20)
 
-#define BOARD_LEDRX_PORT                  (1)
-#define BOARD_LEDRX_PIN                   (3)
+// No RX/TX led
+//#define BOARD_LEDRX_PORT
+//#define BOARD_LEDRX_PIN
 
-#define BOARD_LEDTX_PORT                  (0)
-#define BOARD_LEDTX_PIN                   (27)
+//#define BOARD_LEDTX_PORT
+//#define BOARD_LEDTX_PIN
 
 #endif // _BOARD_DEFINITIONS_H_

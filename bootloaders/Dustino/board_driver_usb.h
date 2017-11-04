@@ -17,14 +17,29 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#if defined(BOARD_ID_dustino)
-  #include "board_definitions_dustino.h"
-#else
-  #error You must define a BOARD_ID and add the corresponding definitions in board_definitions.h
-#endif
+#ifndef _BOARD_DRIVER_USB_H_
+#define _BOARD_DRIVER_USB_H_
 
-// Common definitions
-// ------------------
+#include "sam_ba_cdc.h"
 
-#define BOOT_PIN_MASK (1U << (BOOT_LOAD_PIN & 0x1f))
+extern UsbDeviceDescriptor usb_endpoint_table[MAX_EP];
+extern uint8_t udd_ep_out_cache_buffer[2][64]; //1 for CTRL, 1 for BULK
+extern uint8_t udd_ep_in_cache_buffer[2][64]; //1 for CTRL, 1 for BULK
 
+P_USB_CDC USB_Open(P_USB_CDC pCdc, Usb *pUsb);
+
+void USB_Init(void);
+
+uint32_t USB_Write(Usb *pUsb, const char *pData, uint32_t length, uint8_t ep_num);
+uint32_t USB_Read(Usb *pUsb, char *pData, uint32_t length);
+uint32_t USB_Read_blocking(Usb *pUsb, char *pData, uint32_t length);
+
+uint8_t USB_IsConfigured(P_USB_CDC pCdc);
+
+void USB_SendStall(Usb *pUsb, bool direction_in);
+void USB_SendZlp(Usb *pUsb);
+
+void USB_SetAddress(Usb *pUsb, uint16_t wValue);
+void USB_Configure(Usb *pUsb);
+
+#endif // _BOARD_DRIVER_USB_H_

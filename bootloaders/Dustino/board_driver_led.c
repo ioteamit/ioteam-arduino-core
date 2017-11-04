@@ -17,14 +17,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#if defined(BOARD_ID_dustino)
-  #include "board_definitions_dustino.h"
-#else
-  #error You must define a BOARD_ID and add the corresponding definitions in board_definitions.h
-#endif
+#include "board_driver_led.h"
 
-// Common definitions
-// ------------------
-
-#define BOOT_PIN_MASK (1U << (BOOT_LOAD_PIN & 0x1f))
 
