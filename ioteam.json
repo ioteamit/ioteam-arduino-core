@@ -14,9 +14,6 @@
           "architecture": "samd",
           "version": "1.0.0",
           "category": "Contributed",
-          "help": {
-            "online": "http://www.ioteam.it/"
-          },
           "url": "https://github.com/ioteamit/ioteam-arduino-core/releases/download/V1.0.0/dustino_1_0_0.tar.gz",
           "archiveFileName": "dustino_1_0_0.tar.gz",
           "checksum": "SHA-256:ae82b66eb7ec00b0d399722ba5be495e3f76ae525c74e21457fe22e245b712e6",
@@ -27,7 +24,26 @@
             }
           ],
           "toolsDependencies": [
-            
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "4.8.3-2014q1"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.5-arduino"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.9.0-arduino"
+            },
+            {
+              "packager": "arduino",
+              "name": "CMSIS",
+              "version": "4.0.0-atmel"
+            }
           ]
         }
       ],
