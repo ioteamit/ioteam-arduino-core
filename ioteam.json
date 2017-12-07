@@ -1,40 +1,39 @@
 {
-    "packages": [
+  "packages": [
+    {
+      "name": "dustino",
+      "maintainer": "IOTEAM S.r.l.",
+      "websiteURL": "http://www.ioteam.it/",
+      "email": "info@ioteam.it",
+      "help": {
+        "online": "http://www.ioteam.it/"
+      },
+      "platforms": [
         {
-            "name": "dustino",
-            "maintainer": "IOTEAM S.r.l.",
-            "websiteURL": "http://ioteam.it",
-            "email": "info@ioteam.it",
-            "help": {
-                "online": "http://ioteam.it"
-            },
-            "platforms": [
-                {
-                    "name": "IOTEAM dustino",
-                    "architecture": "samd",
-                    "version": "1.0.0",
-                    "category": "Contributed",
-                    "url": "https://github.com/ioteamit/ioteam-arduino-core/releases/download/V1.0.0/dustino_1_0_0.tar.gz",
-                    "archiveFileName": "dustino_1_0_0.tar.gz",
-                    "checksum": "SHA-256:ae82b66eb7ec00b0d399722ba5be495e3f76ae525c74e21457fe22e245b712e6",
-                    "size": "720221",
-                    "help": {
-                        "online": "https://ioteam.it"
-                    },
-                    "boards": 
-                    [
-                        {
-                            "name": "Dustino"
-                        }
-                    ],
-                    "toolsDependencies": 
-                    [
-                    ]
-                }
-            ],
-            "tools": []
+          "name": "IOTEAM dustino",
+          "architecture": "samd",
+          "version": "1.0.0",
+          "category": "Contributed",
+          "help": {
+            "online": "http://www.ioteam.it/"
+          },
+          "url": "https://github.com/ioteamit/ioteam-arduino-core/releases/download/V1.0.0/dustino_1_0_0.tar.gz",
+          "archiveFileName": "dustino_1_0_0.tar.gz",
+          "checksum": "SHA-256:ae82b66eb7ec00b0d399722ba5be495e3f76ae525c74e21457fe22e245b712e6",
+          "size": "720221",
+          "boards": [
+            {
+              "name": "Dustino"
+            }
+          ],
+          "toolsDependencies": [
+            
+          ]
         }
-    ]
+      ],
+      "tools": [
+        
+      ]
+    }
+  ]
 }
-
-
