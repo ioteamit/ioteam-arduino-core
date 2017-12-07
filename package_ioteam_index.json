@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "dustino",
+      "name": "IOTEAM",
       "maintainer": "IOTEAM S.r.l.",
       "websiteURL": "http://www.ioteam.it/",
       "email": "info@ioteam.it",
@@ -10,7 +10,7 @@
       },
       "platforms": [
         {
-          "name": "IOTEAM dustino",
+          "name": "IOTEAM Boards",
           "architecture": "samd",
           "version": "1.0.0",
           "category": "Contributed",
