@@ -34,7 +34,7 @@ dustino.sketch.name="IOTEAM Dustino"
 dustino.bootloader.name="IOTEAM Dustino bootloader"
 
 [DefaultInstall]
-CopyINF=ioteam.inf
+CopyINF=arrow.inf
 
 [Version]
 Class=Ports
