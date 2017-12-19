@@ -34,7 +34,7 @@ dustino.sketch.name="IOTEAM Dustino"
 dustino.bootloader.name="IOTEAM Dustino bootloader"
 
 [DefaultInstall]
-CopyINF=arrow.inf
+CopyINF=ioteam.inf
 
 [Version]
 Class=Ports
@@ -42,7 +42,7 @@ ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 Signature="$Windows NT$"
 Provider=%ManufacturerName%
 DriverPackageDisplayName=%DriverPackageDisplayName%
-CatalogFile=arrow.cat
+CatalogFile=ioteam.cat
 ; DriverVer date is MM/DD/YYYY
 DriverVer=10/21/2016,1.0.0.0
 
