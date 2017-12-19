@@ -16,8 +16,8 @@
           "category": "Contributed",
           "url": "https://github.com/ioteamit/ioteam-arduino-core/releases/download/V1.0.0/ioteam_1_0_0.tar.gz",
           "archiveFileName": "ioteam_1_0_0.tar.gz",
-          "checksum": "SHA-256:a5fb8a51a1c4f6f90c0d0e9b42f3fcdbf29941a63273f4dc0b7feefd168c6b0a",
-          "size": "24725",
+          "checksum": "SHA-256:1f940773fd1a0b17a532cac7f012e564951155562ceda515a7d6866989202c8a",
+          "size": "724723",
           "boards": [
             {
               "name": "Dustino"
